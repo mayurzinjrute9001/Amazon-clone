@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div class="container">
+
+  <h1 class="text-center">change password</h1>
+
+    <form action="{%url 'change'%} " method="post">
+      {% csrf_token  %}
+      {% if result  %}
+      <div class="alert alert-{{color}}">
+        <strong>{{result}}</strong>
+      </div>
+      {% endif %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="email" value="{{email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+      {% if temp %}
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" name="password" class="form-control"placeholder="*****">
+        </div>
+      {% endif %}
+
+
+  <button type="submit" class="btn btn-primary">change password</button>
+</form>
+
+</div>
+{% endblock %}

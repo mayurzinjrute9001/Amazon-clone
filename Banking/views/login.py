@@ -12,13 +12,16 @@ class Login(View):
             user=User.objects.get(email=email)
             if user:
                 if(user.password==password):
-                    request.session['name']=user.name
+                    if user.acc_status:
+                        request.session['name']=user.name
 
 
-                    return redirect('home')
+                        return redirect('home')
+                    else:
+                        result="account not avtive"
                 else:
-                    print("enter correct password")
+                    result="enter correct password"
 
         except:
-            print("enter valid email")
-        return render(request, 'login.html')
+            result=("enter valid email")
+        return render(request, 'login.html',{'result':result})

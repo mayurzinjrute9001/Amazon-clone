@@ -20,12 +20,14 @@ from Banking.views.login import Login
 from Banking.views.signup import Signup
 from Banking.views.index import Index
 from Banking.views.logout import Logout
+from Banking.views.forgot import Forgot_Password
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(),name='home'),
     path('signup/',Signup.as_view(),name="signup"),
     path('login/', Login.as_view(), name="login"),
-    path('logout/',Logout.as_view( ))
+    path('logout/',Logout.as_view( )),
+    path('change/',Forgot_Password.as_view(),name='change')
 
 ]
